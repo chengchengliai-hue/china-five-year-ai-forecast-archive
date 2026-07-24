@@ -52,10 +52,12 @@
 │           └── SHA256SUMS.txt
 └── skills/
     ├── codex/china-five-year-forecast-team/
-    └── claude/china-five-year-forecast-team/
+    └── deepseek/china-five-year-forecast-team/
 ```
 
-`skills/codex` 保存Codex使用的原始Skill；`skills/claude` 保存适配Claude Code的版本。Claude版要求四位专家在相互隔离的子代理上下文中运行；如果环境无法提供独立子代理，不得在一个上下文里模拟独立实验。
+`skills/codex` 保存Codex使用的原始Skill；`skills/deepseek` 保存DeepSeek版本。DeepSeek版要求四位专家使用实际DeepSeek模型，并在相互隔离的子代理或独立会话中运行；如果环境无法提供隔离上下文，不得在一个上下文里模拟独立实验。
+
+Claude Code可以作为DeepSeek的多代理运行外壳，但必须连接DeepSeek API并核验实际模型标识；此时模型来源仍标记为DeepSeek，而不是Claude。也可以使用支持Agent Skills的Deep Code，或通过四次独立DeepSeek API请求执行专家报告。
 
 ## 实验原则
 
@@ -76,7 +78,19 @@ Codex个人Skill目录：
 ~/.codex/skills/china-five-year-forecast-team/
 ```
 
-Claude Code个人Skill目录：
+Deep Code个人Skill目录：
+
+```text
+~/.agents/skills/china-five-year-forecast-team/
+```
+
+Deep Code项目Skill目录：
+
+```text
+./.deepcode/skills/china-five-year-forecast-team/
+```
+
+如果使用Claude Code作为DeepSeek模型的多代理外壳，Skill仍安装到运行外壳的目录：
 
 ```text
 ~/.claude/skills/china-five-year-forecast-team/

@@ -1,6 +1,6 @@
 ---
 name: china-five-year-forecast-team
-description: Run a repeatable four-expert five-year China forecast for ordinary residents, with a dated cutoff, independent reports, preserved disagreements, validation, and hashes.
+description: Run a repeatable four-expert DeepSeek five-year China forecast for ordinary residents, with a dated cutoff, independent reports, preserved disagreements, validation, and hashes.
 ---
 
 # China five-year forecast team
@@ -16,15 +16,18 @@ Before starting, read all of:
 - [skeptic-external-expert.md](references/skeptic-external-expert.md)
 - [report-contract.md](references/report-contract.md)
 
-## Claude Code execution rules
+## DeepSeek execution rules
 
-- Use Claude Code's Agent tool to run the four specialists in separate subagent contexts. A role played sequentially in the lead agent's context is not an independent specialist.
+- Use DeepSeek models for the lead and all four specialist runs. A compatible agent host such as Claude Code may provide orchestration, but the host name does not determine the model identity.
+- Before analysis, verify and record the actual DeepSeek model identifier exposed by the API or host. When available, also record the backend fingerprint. Do not label a run as DeepSeek if the host silently falls back to an Anthropic Claude or OpenAI model.
+- Prefer the most capable DeepSeek model available at execution time for the lead and all specialists. If different DeepSeek models are used for cost or capacity reasons, record the assignment as a protocol deviation.
+- Use an agent host with isolated subagent contexts to run the four specialists. A role played sequentially in the lead agent's context is not an independent specialist.
 - Build and freeze the shared source pack before launching any specialist. Pass the identical frozen pack to every subagent.
 - Give each subagent only the fixed questionnaire, frozen source pack, cutoff, target date, resident definition, report contract, and its own role contract. Do not expose other specialists' drafts or conclusions.
 - Have subagents return their complete first-draft reports to the lead agent. The lead agent must write the four final report files sequentially; do not let subagents concurrently edit the same output bundle.
 - Launch as many specialists concurrently as the environment safely supports and queue the rest without changing their prompts or source pack.
-- If the Agent tool or isolated subagent contexts are unavailable, stop before specialist analysis and state that the four independent runs require separate Claude Code sessions. Do not simulate independence in one context.
-- Record the exact Claude model identifier exposed by the environment. Do not claim fixed weights or model-version continuity unless the identifier proves it.
+- If isolated subagent contexts are unavailable, stop before specialist analysis and require four separate DeepSeek API requests or chat sessions followed by a fifth synthesis session. Do not simulate independence in one context.
+- Do not claim fixed weights or model-version continuity. Each annual run must record the exact model identifier and configuration available at that time.
 
 ## Workflow
 
@@ -56,7 +59,7 @@ Build one compact source pack before launching specialists. Give the identical p
 
 ### 3. Run four independent specialists
 
-Use four isolated Claude Code subagent runs. Give every specialist the fixed questionnaire, shared source pack, cutoff, target date, resident definition, report contract, and its role contract.
+Use four isolated DeepSeek specialist runs. Give every specialist the fixed questionnaire, shared source pack, cutoff, target date, resident definition, report contract, and its role contract.
 
 - Do not let specialists read one another’s drafts.
 - Do not ask one specialist to summarize another.
