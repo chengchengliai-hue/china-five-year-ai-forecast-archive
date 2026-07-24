@@ -24,6 +24,17 @@
 
 概率只作为辅助注册字段，完整理由、因果机制、普通居民影响、反例和2031年验证方法保留在报告正文中。
 
+### Claude Code：2026—2031年预测
+
+- 信息截止：2026年7月20日23:59，Asia/Shanghai
+- 实际执行：2026年7月24日
+- 预测终点：2031年7月20日
+- 执行系统：Claude Code (deepseek-v4-pro)
+- 完整报告：[reports/claude/2026-07-20](reports/claude/2026-07-20)
+- 综合报告：[05-synthesis-report.md](reports/claude/2026-07-20/05-synthesis-report.md)
+
+综合判断：**温和恶化（modest deterioration）**，伴随深刻内部分化。与Codex预测相同，四位专家在独立子代理上下文中运行。
+
 ## 目录
 
 ```text
