@@ -1,0 +1,4 @@
+interface:
+  display_name: "中国五年预测专家团"
+  short_description: "组织四位独立专家完成中国五年趋势预测、分报告撰写与综合审计"
+  default_prompt: "使用 $china-five-year-forecast-team 完成中国普通居民视角的五年结构预测，并交付四份专家报告和一份综合报告。"
